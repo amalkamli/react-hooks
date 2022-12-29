@@ -1,11 +1,12 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Rating } from 'react-simple-star-rating'
 
 const MovieCard = ({el}) => {
   return (
 			<>
                 <div className='movie'>
-                    <img className='poster' src={el.posterUrl} alt='movie' />
+                    <Link to={`/details/${el.id}`}><img className='poster' src={el.posterUrl} alt='movie' /></Link>
                 <div className='movie-details'>
                     <div className='box'>
                         <h2 className='title' >{el.title}</h2>

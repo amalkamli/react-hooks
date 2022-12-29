@@ -1,22 +1,28 @@
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import React, { useState } from 'react'
+import { useNavigate } from "react-router-dom";
 
-const Search = (props) => {
+const Add = (props) => {
 	const [title, setTitle] = useState("")
 const [desc, setDesc] = useState("")
-const [id, setId] = useState("")
 const [rating, setRating] = useState("")
 const [posterUrl, setPosterUrl] = useState("")
+const [trailerSrc, setrailerSrc] = useState("")
+
 const handleClick=(e)=>{
     e.preventDefault()
-Search(title,desc,rating,id,posterUrl)
 }
 const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-	return (
+  const navigation=useNavigate()
+  const handelClick = () => {
+    props.add(title, desc, posterUrl, trailerSrc);
+    navigation('/')
+  };
+  return (
 		<>
 		<Button className="add-movie" variant="primary" onClick={handleShow}>
 		 Add Movie
@@ -42,4 +48,4 @@ const [show, setShow] = useState(false);
     </>
   )
 }
-export default Search;
+export default Add;
